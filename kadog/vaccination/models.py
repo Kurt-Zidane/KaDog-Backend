@@ -9,4 +9,4 @@ class Vaccine(models.Model):
     # Add more fields as needed
     
     def __str__(self):
-        return self.title
+        return self.vaccination_title
