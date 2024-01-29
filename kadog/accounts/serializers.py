@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from .models import CustomUser
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -9,7 +9,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         style={"input_type": "password"}, write_only=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = [
                     'username', 
                     'email', 
@@ -22,7 +22,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         }
 
     def save(self, **kwargs):
-        user = User.objects.create_user(
+        user = CustomUser.objects.create_user(
             username=self.validated_data['username'],
             email=self.validated_data['email'],
             first_name=self.validated_data['first_name'],
