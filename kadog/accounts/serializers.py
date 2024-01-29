@@ -30,7 +30,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
             password=self.validated_data['password'],
 
         )
-        user.is_active = True
+        user.is_active = False
         user.save()
 
         return user

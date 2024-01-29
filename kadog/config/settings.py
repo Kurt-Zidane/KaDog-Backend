@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv  # Python dotenv
 import os
-
+from datetime import timedelta
 
 load_dotenv()  # loads the configs from .env
 
@@ -28,8 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-FRONTEND_DEBUG = False
+DEBUG = True
+FRONTEND_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'events',
-    'vaccination'
+    'vaccination',
+    'accounts',
 
 ]
 
@@ -146,8 +147,18 @@ REST_FRAMEWORK = {
 DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SEND_CONFIRMATION_EMAIL': True,
+    'ACTIVATION_TOKEN_LIFETIME': timedelta(days=7),
     'ACTIVATION_URL': 'activation/{uid}/{token}',
     'SERIALIZERS': {
         'user_create': 'accounts.serializers.CustomUserSerializer',
     },
 }
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+BASE_URL = 'http://localhost:8000/'
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'af219acf499afb'
+EMAIL_HOST_PASSWORD = 'a3a14d403f7f3f'
+EMAIL_PORT = '2525'
+
