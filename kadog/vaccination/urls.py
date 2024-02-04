@@ -10,5 +10,5 @@ router.register(r'vaccines', views.VaccineViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    path('participate_vaccine', VaccineUserRelationshipCreateView.as_view())
+    path('vaccines/join', VaccineUserRelationshipCreateView.as_view())
 ]

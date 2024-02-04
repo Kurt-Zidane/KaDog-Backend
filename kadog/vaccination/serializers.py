@@ -1,7 +1,14 @@
 from rest_framework import serializers
 from .models import Vaccine
 from .models import VaccineUserParticipant
-class VaccineSerializer(serializers.HyperlinkedModelSerializer):
+from accounts.models import CustomUser
+
+class VaccineSerializer(serializers.ModelSerializer):
+    participants = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='username'
+    )
     class Meta:
         model = Vaccine
         fields = '__all__'
@@ -9,4 +16,4 @@ class VaccineSerializer(serializers.HyperlinkedModelSerializer):
 class VaccineUserRelationshipSerializer(serializers.ModelSerializer):
     class Meta:
         model = VaccineUserParticipant
-        fields = ['id','vaccine', 'participant', 'date_joined']
+        fields = '__all__'
