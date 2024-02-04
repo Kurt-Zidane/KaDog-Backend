@@ -16,4 +16,4 @@ class EventSerializer(serializers.ModelSerializer):
 class EventUserRelationshipSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventUserParticipant
-        fields = ['id','participant', 'event', 'date_joined']
+        fields = '__all__'
