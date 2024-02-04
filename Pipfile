@@ -29,6 +29,7 @@ social-auth-core = "==4.5.1"
 sqlparse = "==0.4.4"
 urllib3 = "==2.1.0"
 whitenoise = "==6.6.0"
+django-cors-headers = "*"
 
 [dev-packages]
 
