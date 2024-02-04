@@ -27,4 +27,4 @@ class VaccineUserParticipant(models.Model):
     
     def __str__(self):
         # Format the datetime as a string using strftime
-        return f"{self.participant.username} - {self.event} - {self.date_joined.strftime('%Y-%m-%d %H:%M:%S')}"
+        return f"{self.participant.username} - {self.vaccine} - {self.date_joined.strftime('%Y-%m-%d %H:%M:%S')}"
