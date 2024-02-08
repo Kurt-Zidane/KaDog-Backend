@@ -7,6 +7,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField(write_only=True)
     password = serializers.CharField(
         style={"input_type": "password"}, write_only=True)
+    dogs = serializers.PrimaryKeyRelatedField(
+        many=True, allow_null=True, read_only=True)
 
     class Meta:
         model = CustomUser
@@ -16,6 +18,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
                     'first_name', 
                     'last_name', 
                     'password',
+                    'dogs'
                 ]
         extra_kwargs = {
             'password': {'write_only': True}

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'events',
     'vaccination',
     'accounts',
+    'dogs',
 
 ]
 

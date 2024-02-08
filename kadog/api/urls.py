@@ -5,4 +5,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('events/', include('events.urls')),
     path('vaccines/', include('vaccination.urls')),
+    path('', include('dogs.urls')),
 ]
