@@ -7,7 +7,7 @@ class Dog(models.Model):
         SMALL = 'Small', 'small'
         MEDIUM = 'Medium', 'medium'
         LARGE = 'Large', 'large'
-        EXTRA_LARGE = 'Extra large', 'extra_large'
+        EXTRA_LARGE = 'Extra large', 'extra large'
 
     name = models.CharField(max_length=30)
     breed = models.CharField(max_length=30)
