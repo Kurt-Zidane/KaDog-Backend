@@ -9,5 +9,5 @@ class DogSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Dog
-        fields = ('id','name','breed','dog_size','owner','date_created')
+        fields = ('id','name','breed','dog_gender','dog_size','owner','date_created')
         read_only_fields =('id','date_created')

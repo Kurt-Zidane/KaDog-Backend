@@ -9,8 +9,13 @@ class Dog(models.Model):
         LARGE = 'Large', 'large'
         EXTRA_LARGE = 'Extra large', 'extra large'
 
+    class DogGender(models.TextChoices):
+        MALE = 'Male', 'male'
+        FEMALE = 'Female', 'female'
+
     name = models.CharField(max_length=30)
     breed = models.CharField(max_length=30)
+    dog_gender = models.CharField(max_length=15,choices=DogGender.choices, default=DogGender.MALE)
     dog_size = models.CharField(max_length=15, choices=DogSize.choices, default=DogSize.SMALL)
     date_created = models.DateTimeField(default=now, editable=False)
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
