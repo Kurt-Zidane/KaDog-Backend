@@ -4,10 +4,10 @@ from .models import Event
 from .models import EventUserParticipant
 
 class EventSerializer(serializers.ModelSerializer):
-    participants = serializers.SlugRelatedField(
+    participants = serializers.PrimaryKeyRelatedField(
         many=True,
         read_only=True,
-        slug_field='username'
+        allow_null=True
     )    
     class Meta:
         model = Event
