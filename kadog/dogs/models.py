@@ -19,6 +19,8 @@ class Dog(models.Model):
     dog_size = models.CharField(max_length=15, choices=DogSize.choices, default=DogSize.SMALL)
     date_created = models.DateTimeField(default=now, editable=False)
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    events = models.ManyToManyField('events.Event', through='venue.DogEvent')
+    
 
     # Add more fields as needed
     class Meta:
@@ -27,5 +29,4 @@ class Dog(models.Model):
     
     def __str__(self):
         # Format the datetime as a string using strftime
-        return f"Owner: {self.owner.username} | Dog Name: {self.name} | Dog Breed: {self.breed}"
-    
+        return self.name
