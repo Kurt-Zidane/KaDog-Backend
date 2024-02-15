@@ -5,8 +5,6 @@ from accounts.models import CustomUser
 class Event(models.Model):
           
     title = models.CharField(max_length=100)
-    date_field = models.DateField(null=True)
-    venue = models.CharField(max_length=100, null=True)
     description = models.TextField(default='Please input the information for this event.')
     participants = models.ManyToManyField(CustomUser, through='EventUserParticipant')
 
