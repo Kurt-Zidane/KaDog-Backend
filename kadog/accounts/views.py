@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from djoser.views import UserViewSet
 from .models import CustomUser
 from .serializers import CustomUserSerializer, CustomUserCurrentSerializer
+from rest_framework.views import APIView
 
 class CustomUserCurrentViewSet(UserViewSet):
     queryset = CustomUser.objects.all()
@@ -21,3 +22,9 @@ class CustomUserCurrentViewSet(UserViewSet):
 class CustomUserListView(generics.ListCreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+
+
+class TotalUserCountView(APIView):
+    def get(self, request, *args, **kwargs):
+        total_users = CustomUser.objects.count()
+        return Response({"total_users": total_users})
