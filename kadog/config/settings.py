@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'vaccination',
     'accounts',
     'dogs',
+    'venue',
 
 ]
 
@@ -152,6 +153,7 @@ DJOSER = {
     'ACTIVATION_URL': 'activation/{uid}/{token}',
     'SERIALIZERS': {
         'user_create': 'accounts.serializers.CustomUserSerializer',
+        'current_user': 'accounts.serializers.CustomUserCurrentSerializer'
     },
 }
 
