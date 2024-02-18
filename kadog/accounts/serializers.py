@@ -12,7 +12,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     first_name = serializers.CharField()
     last_name = serializers.CharField()
-    sex = serializers.ChoiceField(choices=SEX_CHOICES)
+    sex = serializers.ChoiceField(choices=SEX_CHOICES,allow_blank=True)
     password = serializers.CharField(
         style={"input_type": "password"}, write_only=True)
     

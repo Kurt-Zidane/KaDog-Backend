@@ -1,12 +1,16 @@
-from rest_framework import viewsets
+from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from .serializers import DogSerializer
 from .models import Dog
-class DogViewSet(viewsets.ModelViewSet):
-    #permission_classes = [IsAuthenticated]
-    queryset = Dog.objects.all()
+
+class DogListAPIView(generics.ListAPIView):
     serializer_class = DogSerializer
+    permission_classes = [IsAuthenticated]  # Ensure the user is authenticated
 
     def get_queryset(self):
-        queryset = Dog.objects.all().order_by('date_created')
-        return queryset
+        # Filter the queryset based on the authenticated user
+        user = self.request.user
+        if user.is_authenticated:
+            return Dog.objects.filter(owner=user)
+        else:
+            return Dog.objects.none()  # Return an empty queryset if the user is not authenticated
