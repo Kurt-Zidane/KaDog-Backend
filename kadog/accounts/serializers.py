@@ -4,12 +4,18 @@ from djoser.serializers import UserSerializer
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
+    SEX_CHOICES = (
+        ('Male', 'male'),
+        ('Female', 'female'),
+        ('Other', 'other'),
+    )
+
     first_name = serializers.CharField()
     last_name = serializers.CharField()
-    sex = serializers.CharField()
+    sex = serializers.ChoiceField(choices=SEX_CHOICES)
     password = serializers.CharField(
         style={"input_type": "password"}, write_only=True)
-
+    
     class Meta:
         model = CustomUser
         fields = [
