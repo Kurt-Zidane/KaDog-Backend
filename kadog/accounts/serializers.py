@@ -12,33 +12,36 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     first_name = serializers.CharField()
     last_name = serializers.CharField()
-    sex = serializers.ChoiceField(choices=SEX_CHOICES,allow_blank=True)
+    sex = serializers.ChoiceField(choices=SEX_CHOICES, allow_blank=True, required=False)
     password = serializers.CharField(
         style={"input_type": "password"}, write_only=True)
     
     class Meta:
         model = CustomUser
         fields = [
-                    'username', 
-                    'email', 
-                    'first_name', 
-                    'last_name', 
-                    'sex',
-                    'password',
-                ]
+            'username', 
+            'email', 
+            'first_name', 
+            'last_name', 
+            'sex',
+            'password',
+        ]
         extra_kwargs = {
             'password': {'write_only': True}
         }
 
     def save(self, **kwargs):
+        # Get the value of 'sex' from the validated data, defaulting to an empty string if not present
+        sex = self.validated_data.get('sex', '')
+        
+        # Create the user using the retrieved or default value for 'sex'
         user = CustomUser.objects.create_user(
             username=self.validated_data['username'],
             email=self.validated_data['email'],
             first_name=self.validated_data['first_name'],
             last_name=self.validated_data['last_name'],
-            sex=self.validated_data['sex'],
+            sex=sex,  # Use the retrieved or default value for 'sex'
             password=self.validated_data['password'],
-
         )
         user.is_active = True
         user.save()
