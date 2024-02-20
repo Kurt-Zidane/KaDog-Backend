@@ -9,7 +9,7 @@ class DogSerializer(serializers.ModelSerializer):
     owner = CustomUserSerializer(read_only=True)
     class Meta:
         model = Dog
-        fields = ('id', 'name', 'owner')  # Adjust fields as needed
+        fields = ('id', 'name', 'breed','dog_size','owner')  # Adjust fields as needed
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:

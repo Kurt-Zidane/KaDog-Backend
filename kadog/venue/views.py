@@ -24,8 +24,17 @@ class DogEventCreateView(generics.CreateAPIView):
     serializer_class = DogEventCreateSerializer
 
 class DogEventListView(generics.ListAPIView):
-    queryset = DogEvent.objects.all()
     serializer_class = DogEventListSerializer
+
+    def get_queryset(self):
+        # Get the event_id from the URL parameter
+        event_id = self.kwargs['event_id']
+        
+        # Filter DogEvent queryset based on the event_id
+        queryset = DogEvent.objects.filter(event_id=event_id)
+        
+        return queryset
+
 
 class DogEventTotalView(APIView):
 

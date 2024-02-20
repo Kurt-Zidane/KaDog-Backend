@@ -10,6 +10,6 @@ urlpatterns = [
     path('total/', DogEventTotalView.as_view()),
     path('<int:pk>', VenueDetailView.as_view()),
     path('events/', VenueEventListView.as_view()),
-    path('events/participants/',DogEventListView.as_view()),
+    path('events/participants/<int:event_id>/',DogEventListView.as_view()),
     path('events/participate/',DogEventCreateView.as_view())
 ]
