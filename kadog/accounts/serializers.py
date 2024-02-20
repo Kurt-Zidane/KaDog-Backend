@@ -57,4 +57,4 @@ class CustomUserCurrentSerializer(UserSerializer):
     last_name = serializers.CharField()
 
     class Meta(UserSerializer.Meta):
-        fields = ('id', 'email', 'username', 'first_name', 'last_name','sex')
+        fields = ('id', 'email', 'username', 'first_name', 'last_name','sex','contact_number')
