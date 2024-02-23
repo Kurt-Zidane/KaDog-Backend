@@ -28,3 +28,21 @@ class TotalUserCountView(APIView):
     def get(self, request, *args, **kwargs):
         total_users = CustomUser.objects.count()
         return Response({"total_users": total_users})
+    
+class CustomUserRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
+    serializer_class = CustomUserCurrentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
+
+    def perform_update(self, serializer):
+        serializer.save()
