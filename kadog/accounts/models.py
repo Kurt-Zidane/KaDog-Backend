@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class CustomUser(AbstractUser):
-    # Add custom fields
+    is_judge = models.BooleanField(default=False)
 
     class Sex(models.TextChoices):
         MALE = 'Male', 'male'
