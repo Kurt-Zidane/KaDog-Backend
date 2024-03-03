@@ -15,16 +15,17 @@ class Vaccine(models.Model):
         return self.vaccination_title
     
 class VaccineUserParticipant(models.Model):
-          
+    attendee = models.CharField(max_length=50,blank=True)
     vaccine = models.ForeignKey(Vaccine, on_delete=models.CASCADE)
-    participant = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    dog = models.ForeignKey('dogs.Dog', on_delete=models.CASCADE)
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date_joined = models.DateTimeField(default=now, editable=False)
     # Add more fields as needed
 
     class Meta:
         # Unique constraint to ensure each user is associated with an event only once
-        unique_together = ('participant', 'vaccine')
+        unique_together = ('owner', 'vaccine')
     
     def __str__(self):
         # Format the datetime as a string using strftime
-        return f"{self.participant.username} - {self.vaccine} - {self.date_joined.strftime('%Y-%m-%d %H:%M:%S')}"
+        return f"{self.owner.username} - {self.vaccine} - {self.date_joined.strftime('%Y-%m-%d %H:%M:%S')}"
