@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterUniqueTogether(
-            name='venueeventsparticipants',
+            name='venueeventsparticipant',
             unique_together={('venue', 'event')},
         ),
         migrations.CreateModel(

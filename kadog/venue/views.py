@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from .serializers import VenueSerializer, VenueEventSerializer, DogEventListSerializer, DogEventCreateSerializer
-from .models import Venue, VenueEventsParticipants, DogEvent
+from .models import Venue, VenueEventsParticipant, DogEvent
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -16,7 +16,7 @@ class VenueDetailView(generics.RetrieveAPIView):
 
 class VenueEventListView(generics.ListAPIView):
     #permission_classes = [IsAuthenticated]
-    queryset = VenueEventsParticipants.objects.all()
+    queryset = VenueEventsParticipant.objects.all()
     serializer_class = VenueEventSerializer
 
 class DogEventCreateView(generics.CreateAPIView):

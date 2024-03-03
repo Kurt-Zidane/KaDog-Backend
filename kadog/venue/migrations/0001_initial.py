@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='VenueEventsParticipants',
+            name='VenueEventsParticipant',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, editable=False)),
@@ -35,6 +35,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='venue',
             name='events',
-            field=models.ManyToManyField(through='venue.VenueEventsParticipants', to='events.event'),
+            field=models.ManyToManyField(through='venue.VenueEventsParticipant', to='events.event'),
         ),
     ]

@@ -6,7 +6,7 @@ class Event(models.Model):
           
     title = models.CharField(max_length=100)
     description = models.TextField(default='Please input the information for this event.')
-    venues = models.ManyToManyField('venue.Venue', through='venue.VenueEventsParticipants')
+    venues = models.ManyToManyField('venue.Venue', through='venue.VenueEventsParticipant')
     # Add more fields as needed
     
     def __str__(self):

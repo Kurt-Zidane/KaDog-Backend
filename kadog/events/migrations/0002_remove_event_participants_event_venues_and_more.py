@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='venues',
-            field=models.ManyToManyField(through='venue.VenueEventsParticipants', to='venue.venue'),
+            field=models.ManyToManyField(through='venue.VenueEventsParticipant', to='venue.venue'),
         ),
         migrations.DeleteModel(
             name='EventUserParticipant',

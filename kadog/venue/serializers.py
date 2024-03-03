@@ -1,6 +1,6 @@
 # venue/serializers.py
 from rest_framework import serializers
-from .models import Venue,VenueEventsParticipants, DogEvent
+from .models import Venue,VenueEventsParticipant, DogEvent
 from dogs.models import Dog
 from accounts.serializers import CustomUserSerializer
 from events.models import Event
@@ -30,7 +30,7 @@ class VenueEventSerializer(serializers.ModelSerializer):
     )
     event = EventSerializer()
     class Meta:
-        model = VenueEventsParticipants
+        model = VenueEventsParticipant
         fields = '__all__'
 
 class DogEventListSerializer(serializers.ModelSerializer):

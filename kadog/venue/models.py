@@ -9,12 +9,12 @@ class Venue(models.Model):
     venue_place = models.CharField(max_length=100)
     venue_date = models.DateField(null=True)
     description = models.TextField(default='Please input the information for this event.')
-    events = models.ManyToManyField('events.Event', through='VenueEventsParticipants')
+    events = models.ManyToManyField('events.Event', through='VenueEventsParticipant')
 
     def __str__(self):
         return self.venue_place
     
-class VenueEventsParticipants(models.Model):
+class VenueEventsParticipant(models.Model):
     venue = models.ForeignKey('venue.Venue', on_delete=models.CASCADE)
     event = models.ForeignKey('events.Event', on_delete=models.CASCADE)
     date_joined = models.DateTimeField(default=now, editable=False)
