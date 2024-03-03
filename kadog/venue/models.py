@@ -20,7 +20,7 @@ class VenueEventsParticipant(models.Model):
     date_joined = models.DateTimeField(default=now, editable=False)
 
     def __str__(self):
-        return self.venue.venue_place
+        return self.event.title
     
     class Meta:
         # Unique constraint to ensure each user is associated with an event only once
