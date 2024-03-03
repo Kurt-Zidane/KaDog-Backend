@@ -17,7 +17,7 @@ class Dog(models.Model):
     breed = models.CharField(max_length=30)
     dog_gender = models.CharField(max_length=15,choices=DogGender.choices, default=DogGender.MALE)
     dog_size = models.CharField(max_length=15, choices=DogSize.choices, default=DogSize.SMALL)
-    dog_age = models.IntegerField()
+    dog_age = models.IntegerField(null=True, blank=True, default=0)
     date_created = models.DateTimeField(default=now, editable=False)
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     events = models.ManyToManyField('events.Event', through='venue.DogEvent')
