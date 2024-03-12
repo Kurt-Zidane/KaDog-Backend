@@ -17,6 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Django admin header customization
+
+admin.site.site_header = "Login to KA-DOG Admin"
+admin.site.site_title = "Welcome to Kadog Admin Dashboard"
+admin.site.index_title = "Welcome to the Kadog Admin Portal"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
