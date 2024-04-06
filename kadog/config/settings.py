@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -67,10 +68,31 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+# settings.py
+
+UNFOLD = {
+    "COLORS": {
+        "primary": {
+            "50": "235 245 255", # Lightest shade
+            "100": "227 238 255",
+            "200": "211 225 255",
+            "300": "195 212 255",
+            "400": "179 200 255", # Closest to #87CEEB
+            "500": "163 188 255",
+            "600": "147 176 255",
+            "700": "131 164 255",
+            "800": "115 152 255",
+            "900": "99 140 255", # Darkest shade
+            "950": "73 128 255",
+        },
+    },
+}
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +153,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
