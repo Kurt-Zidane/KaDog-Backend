@@ -19,8 +19,8 @@ from django.urls import path, include
 
 # Django admin header customization
 
-admin.site.site_header = "Login to KA-DOG Admin"
-admin.site.site_title = "Welcome to Kadog Admin Dashboard"
+admin.site.site_title = "KA-DOG Admin Site"
+admin.site.site_header = "KADOG ADMIN "
 admin.site.index_title = "Welcome to the Kadog Admin Portal"
 
 urlpatterns = [
