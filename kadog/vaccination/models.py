@@ -24,8 +24,8 @@ class VaccineUserParticipant(models.Model):
 
     class Meta:
         # Unique constraint to ensure each user is associated with an event only once
-        unique_together = ('owner', 'vaccine')
+        unique_together = ('dog', 'vaccine')
     
     def __str__(self):
         # Format the datetime as a string using strftime
-        return f"{self.owner.username} - {self.vaccine} - {self.date_joined.strftime('%Y-%m-%d %H:%M:%S')}"
+        return f"{self.dog} - {self.vaccine} - {self.date_joined.strftime('%Y-%m-%d %H:%M:%S')}"
