@@ -20,7 +20,7 @@ class PetName(models.Model):
     dog_age = models.IntegerField()
     date_created = models.DateTimeField(default=now, editable=False)
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    events = models.ManyToManyField('events.Event', through='venue.DogEvent')
+    events = models.ManyToManyField('events.PetEntertainment', through='venue.DogEvent')
     vaccines = models.ManyToManyField('vaccination.Vaccine', through='vaccination.VaccineUserParticipant')
     
 

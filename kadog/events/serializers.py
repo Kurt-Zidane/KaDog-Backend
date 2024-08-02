@@ -1,6 +1,6 @@
 # events/serializers.py
 from rest_framework import serializers
-from .models import Event
+from .models import PetEntertainment
 
 class EventSerializer(serializers.ModelSerializer):
     participants = serializers.PrimaryKeyRelatedField(
@@ -9,6 +9,6 @@ class EventSerializer(serializers.ModelSerializer):
         allow_null=True
     )    
     class Meta:
-        model = Event
+        model = PetEntertainment
         fields = '__all__'
 
