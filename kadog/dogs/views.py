@@ -3,14 +3,14 @@ from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .serializers import DogSerializer
-from .models import Dog
+from .models import PetName
 
 class DogListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = DogSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Dog.objects.filter(owner=self.request.user)
+        return PetName.objects.filter(owner=self.request.user)
 
     def create(self, request, *args, **kwargs):
         # Make a mutable copy of the request data

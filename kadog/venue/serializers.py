@@ -1,14 +1,14 @@
 # venue/serializers.py
 from rest_framework import serializers
 from .models import Venue,VenueEventsParticipant, DogEvent
-from dogs.models import Dog
+from dogs.models import PetName
 from accounts.serializers import CustomUserSerializer
 from events.models import Event
 
 class DogSerializer(serializers.ModelSerializer):
     owner = CustomUserSerializer(read_only=True)
     class Meta:
-        model = Dog
+        model = PetName
         fields = ('id', 'name', 'breed','dog_size','dog_age','owner')  # Adjust fields as needed
 
 class EventSerializer(serializers.ModelSerializer):

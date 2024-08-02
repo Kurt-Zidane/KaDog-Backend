@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 from accounts.models import CustomUser
 from events.models import Event
-from dogs.models import Dog
+from dogs.models import PetName
 # Create your models here.
 
 class Venue(models.Model):
@@ -28,7 +28,7 @@ class VenueEventsParticipant(models.Model):
 
 class DogEvent(models.Model):
     event = models.ForeignKey('events.Event', on_delete=models.CASCADE)
-    dog = models.ForeignKey('dogs.Dog', on_delete=models.CASCADE)
+    dog = models.ForeignKey('dogs.PetName', on_delete=models.CASCADE)
     attendee = models.CharField(max_length=50,blank=True)
     date_joined = models.DateTimeField(default=now, editable=False)
 

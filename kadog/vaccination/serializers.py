@@ -3,12 +3,12 @@ from .models import Vaccine
 from .models import VaccineUserParticipant
 from accounts.models import CustomUser
 from accounts.serializers import CustomUserSerializer
-from dogs.models import Dog
+from dogs.models import PetName
 
 class DogSerializer(serializers.ModelSerializer):
     owner = CustomUserSerializer(read_only=True)
     class Meta:
-        model = Dog
+        model = PetName
         fields = ('id', 'name', 'breed','dog_size','dog_age','owner')  # Adjust fields as needed
 
 class VaccineSerializer(serializers.ModelSerializer):

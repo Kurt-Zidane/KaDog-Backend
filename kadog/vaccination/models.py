@@ -17,7 +17,7 @@ class Vaccine(models.Model):
 class VaccineUserParticipant(models.Model):
     attendee = models.CharField(max_length=50,blank=True)
     vaccine = models.ForeignKey(Vaccine, on_delete=models.CASCADE)
-    dog = models.ForeignKey('dogs.Dog', on_delete=models.CASCADE)
+    dog = models.ForeignKey('dogs.PetName', on_delete=models.CASCADE)
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date_joined = models.DateTimeField(default=now, editable=False)
     # Add more fields as needed

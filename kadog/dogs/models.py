@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 from accounts.models import CustomUser
 
-class Dog(models.Model):
+class PetName(models.Model):
     class DogSize(models.TextChoices):
         SMALL = 'Small', 'small'
         MEDIUM = 'Medium', 'medium'
