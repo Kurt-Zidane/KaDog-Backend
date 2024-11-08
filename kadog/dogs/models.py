@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 from accounts.models import CustomUser
 
-class Dog(models.Model):
+class PetName(models.Model):
     class DogSize(models.TextChoices):
         SMALL = 'Small', 'small'
         MEDIUM = 'Medium', 'medium'
@@ -20,7 +20,7 @@ class Dog(models.Model):
     dog_age = models.IntegerField()
     date_created = models.DateTimeField(default=now, editable=False)
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    events = models.ManyToManyField('events.Event', through='venue.DogEvent')
+    events = models.ManyToManyField('events.PetEntertainment', through='venue.DogEvent')
     vaccines = models.ManyToManyField('vaccination.Vaccine', through='vaccination.VaccineUserParticipant')
     
 

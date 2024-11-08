@@ -38,6 +38,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "unfold",
+    "unfold.contrib.filters",  # Optional: for special filters
+    "unfold.contrib.forms",    # Optional: for special form elements
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
