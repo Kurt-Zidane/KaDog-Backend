@@ -25,8 +25,13 @@ class VaccineUserRelationshipCreateView(generics.CreateAPIView):
         mutable_data = request.data.copy()
         
         # Extract token from Authorization header
-        auth_token = request.headers.get('Authorization').split(' ')[1]
-        mutable_data['owner_token'] = auth_token
+        auth_header = request.headers.get('Authorization')
+        if auth_header is not None:
+            auth_token = auth_header.split(' ')[1]
+            mutable_data['owner_token'] = auth_token
+        else:
+            # Handle the case where the Authorization header is missing
+            return Response({"error": "Authorization header is missing"}, status=status.HTTP_400_BAD_REQUEST)
 
         serializer = self.get_serializer(data=mutable_data)
         if serializer.is_valid():
